@@ -65,10 +65,10 @@ import streamlit as st
 import pandas as pd
 from joblib import load
 
-# Load the model
+# Loading the model
 model = load('random_forest_churn_model_smote.pkl')
 
-# Quick message to verify the app is working
+# Just a test to see if the webapp prints stuff accurately
 st.write("The Weeknd is da GOAT")
 
 # Load dataset to get column info
@@ -79,22 +79,21 @@ num_fields = df.drop(columns=bin_fields).columns.to_list()
 
 predictor = []
 
-# Collecting binary field inputs
 for field in bin_fields[:3]:
     predictor.append(st.selectbox(f"{field}:", ("Yes", "No")) == "Yes")
 
-# First numeric input
+
 predictor.append(st.number_input(num_fields[0]))
 
-# More binary fields
+
 for field in bin_fields[3:12]:
     predictor.append(st.selectbox(f"{field}:", ("Yes", "No")) == "Yes")
 
-# More numeric inputs
+
 for field in num_fields[1:3]:
     predictor.append(st.number_input(field))
 
-# Remaining binary inputs
+
 for field in bin_fields[12:22]:
     predictor.append(st.selectbox(f"{field}:", ("Yes", "No")) == "Yes")
 
