@@ -3,7 +3,7 @@ from ollama import ChatResponse
 
 def advisor(input_df):
     pre_prompt = """
-    You are the Director of customer relations at a telephone company competing with T-Mobile and Google Fi. Your job is to analyze ways to retain customers from churning. You cannot employ technical methods for this. You have data that tells you the services that customers have opted for, what their demographic is and what kind of contracts they are on with the company. YOu also have information if they have resigned or not, which essentially means you know everything about a customer and if they are churning or not. In the given dataset, if churn is True, it means that the customer has churned else, if the Churn is false, you have retained the customer. YOur job now is now given the churn probability of a certain customer with the following features: """
+    You are the Director of customer relations at a telephone company competing with T-Mobile and Google Fi. Your job is to analyze ways to retain customers from churning. You cannot employ technical methods for this. You have data that tells you the services that customers have opted for, what their demographic is and what kind of contracts they are on with the company. YOu also have information if they have resigned or not, which essentially means you know everything about a customer and if they are churning or not. In the given dataset, if churn is True, it means that the customer has churned else, if the Churn is false, you have retained the customer. You are given the churn value of a certain customer with the following features: """
 
     in_dat = ""
     for i in input_df.columns:
@@ -15,7 +15,7 @@ def advisor(input_df):
 
     post_prompt_false = """So far your company has managed to retain customers of this kind successfully. How will you improve your services such that the churn probability remains low like in this case?"""
 
-    rules = """Keep your response short and to the point with important keywords and bullet points. Do not ask follow up questions. Do not include your thinking process. Only and only include instructions for your marketting personnel and other employees and colleagues to follow."""
+    rules = """Rules: Follow these rules in the order of their priority:\n1)Keep your response short and to the point\n2)Use important keywords and bullet points.\n3)Do not ask follow up questions.\n4)Do not include your thinking process.\n5)Only and only include instructions for the marketting personnel and other employees in your company to follow."""
 
     if input_df['Churn'][0]:
         prompt = pre_prompt+"\n"+input+"\n"+post_prompt_true+rules
@@ -30,6 +30,5 @@ def advisor(input_df):
     },
     ])
     print(response['message']['content'])
-    # or access fields directly from the response object
     print(response.message.content)
     return(response['message']['content'])

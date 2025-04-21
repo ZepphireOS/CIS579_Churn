@@ -25,13 +25,13 @@ torch.serialization.add_safe_globals([ChurnModel])
 
 ann_model = ChurnModel(input_dim=25)
 ann_model.load_state_dict(torch.load(
-    "/media/jai/Projects/projects/ai-churn/CIS579_Churn/bharath/ann_weights_only.pth",
+    "webapp/assets/models/ann_weights_only.pth",
     map_location=torch.device('cpu') #so that it works without the gpu too
 ))
 ann_model.eval()
 
-rfr = load("/media/jai/Projects/projects/ai-churn/CIS579_Churn/Stayner/random_forest_churn_model_smote.pkl")
-xgc = load("/media/jai/Projects/projects/ai-churn/CIS579_Churn/jaivanth/xgc_gc.joblib")
+rfr = load("webapp/assets/models/random_forest_churn_model_smote.pkl")
+xgc = load("webapp/assets/models/xgc_gc.joblib")
 
 
 
@@ -43,9 +43,7 @@ def predict_all(input_df):
     input_tensor = torch.tensor(input_df.values, dtype=torch.float32)
     with torch.no_grad():
         output = ann_model(input_tensor)
-
     probs = torch.sigmoid(output)
-
     ann_pred = (probs >= 0.5).int()
 
     return [xgc.predict(input_df)[0], rfr.predict(input_df)[0], ann_pred.item()]

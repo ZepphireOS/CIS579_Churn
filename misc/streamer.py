@@ -2,14 +2,8 @@ import streamlit as st
 import pandas as pd
 import predictors
 
-df_wo_churn = pd.read_csv('/media/jai/Projects/projects/ai-churn/CIS579_Churn/data/bs_eda_wo_index.csv')
-df = df_wo_churn.drop(columns=['Churn'])
-bin_fields = df.select_dtypes(include='bool').columns.to_list()
-num_fields = df.drop(columns=bin_fields).columns.to_list()
-
 def inputter():
     predictor = []
-
     for field in bin_fields[:3]:
         predictor.append(st.selectbox(f"{field}:", ("Yes", "No")) == "Yes")
 
@@ -81,5 +75,9 @@ def submitter(predictor):
 
 if __name__ == '__main__':
     st.title("Customer Churn Predictor")
+    df_wo_churn = pd.read_csv('/media/jai/Projects/projects/ai-churn/CIS579_Churn/data/bs_eda_wo_index.csv')
+    df = df_wo_churn.drop(columns=['Churn'])
+    bin_fields = df.select_dtypes(include='bool').columns.to_list()
+    num_fields = df.drop(columns=bin_fields).columns.to_list()
     user_input = inputter()
     submitter(user_input)
