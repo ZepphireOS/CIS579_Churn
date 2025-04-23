@@ -25,13 +25,13 @@ torch.serialization.add_safe_globals([ChurnModel])
 
 ann_model = ChurnModel(input_dim=25)
 ann_model.load_state_dict(torch.load(
-    "webapp/assets/models/ann_weights_only.pth",
+    "webapp/assets/models/ann_model.pth",
     map_location=torch.device('cpu') #so that it works without the gpu too
 ))
 ann_model.eval()
 
-rfr = load("webapp/assets/models/random_forest_churn_model_smote.pkl")
-xgc = load("webapp/assets/models/xgc_gc.joblib")
+rfr = load("webapp/assets/models/rfc_smote_gs.pkl")
+xgc = load("webapp/assets/models/xgc_gs.joblib")
 
 
 

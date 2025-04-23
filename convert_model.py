@@ -29,5 +29,5 @@ full_model = torch.load(
 )
 
 # Save only weights
-torch.save(full_model.state_dict(), "/media/jai/Projects/projects/ai-churn/CIS579_Churn/bharath/ann_weights_only.pth")
+torch.save(full_model.state_dict(), "webapp/assets/models/ann_weights_only.pth")
 print("Weights-only model saved successfully.")
