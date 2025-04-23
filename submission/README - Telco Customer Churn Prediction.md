@@ -38,15 +38,6 @@ This Jupyter notebook includes the implementation of an **Artificial Neural Netw
 
 ---
 
-###  `comparison.ipynb`
-A centralized notebook comparing the results of the three models:
-- ANN
-- Random Forest
-- XGBoost  
-Includes side-by-side performance metrics, confusion matrices, and visual summaries for final model selection.
-
----
-
 ###  `CustomerChurn.xlsx`
 Contains the original data downloaded from https://www.kaggle.com/datasets/blastchar/telco-customer-churn
 
