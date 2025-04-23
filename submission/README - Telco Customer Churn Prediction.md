@@ -38,8 +38,18 @@ This Jupyter notebook includes the implementation of an **Artificial Neural Netw
 
 ---
 
+###  `box_scatterplots.ipynb`
+Evaluates the preprocessed dataset by creating boxplots and scatterplots of some of the attributes against each other.
+
+---
+
 ###  `CustomerChurn.xlsx`
 Contains the original data downloaded from https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+
+---
+
+###  `EDA_v2_with_plots.ipynb`
+Gathers EDA charts of the preprocessed data, including the distribution barplots and the heatmap.
 
 ---
 
