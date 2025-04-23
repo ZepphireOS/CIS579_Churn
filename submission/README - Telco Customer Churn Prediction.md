@@ -49,11 +49,7 @@ Contains the original data downloaded from https://www.kaggle.com/datasets/blast
 ---
 
 ###  `EDA_v2_with_plots.ipynb`
-Gathers EDA charts of the preprocessed data, including the distribution barplots and the heatmap.
 
----
-
-###  `plots.ipynb`
 This notebook is dedicated to creating visualizations for:
 - Feature distributions
 - Class imbalance (e.g., churn vs no churn)
